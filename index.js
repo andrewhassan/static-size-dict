@@ -42,8 +42,14 @@ StaticDict.fifoEvictionPolicy = function(static_dict) {
  *
  * @param {StaticDict} static_dict
  */
-StaticDict.dropFirstEvictionPolicy = function() {
-  throw new Error('Not implemented yet');
+StaticDict.dropFirstEvictionPolicy = function(static_dict) {
+  var first_key = _.first(_.keys(static_dict._dict));
+
+  _.remove(static_dict._insertion_array, function(index) {
+    return index === first_key;
+  });
+  delete static_dict._dict[first_key];
+  static_dict._count--;
 };
 
 /**
@@ -53,8 +59,14 @@ StaticDict.dropFirstEvictionPolicy = function() {
  *
  * @param {StaticDict} static_dict
  */
-StaticDict.dropRandomEvictionPolicy = function() {
-  throw new Error('Not implemented yet');
+StaticDict.dropRandomEvictionPolicy = function(static_dict) {
+  var key = _.sample(static_dict._insertion_array);
+
+  _.remove(static_dict._insertion_array, function(index) {
+    return index === key;
+  });
+  delete static_dict._dict[key];
+  static_dict._count--;
 };
 
 /***** API *****/
