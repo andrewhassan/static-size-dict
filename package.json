@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/andrewhassan/static-size-dict/issues"
   },
-  "homepage": "https://github.com/andrewhassan/static-size-dict#readme"
+  "homepage": "https://github.com/andrewhassan/static-size-dict#readme",
+  "dependencies": {
+    "lodash": "^3.10.0"
+  }
 }
